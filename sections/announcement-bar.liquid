@@ -88,14 +88,6 @@
             =============================================================
             {% endcomment %}
             {%- for block in section.blocks -%}
-              {% comment %}
-            =============================================================
-            // CUSTOM ANNOUNCEMENT BAR TEXT
-            =============================================================
-            {% endcomment %}
-            <div class="announce-bar">
-            50% Sale on July 4th 2026
-            </div>
               <div
                 class="slideshow__slide slider__slide grid__item grid--1-col"
                 id="Slide-{{ section.id }}-{{ forloop.index }}"
@@ -105,6 +97,14 @@
                 aria-label="{{ forloop.index }} {{ 'general.slider.of' | t }} {{ forloop.length }}"
                 tabindex="-1"
               >
+              {% comment %}
+            =============================================================
+            // CUSTOM ANNOUNCEMENT BAR TEXT
+            =============================================================
+            {% endcomment %}
+            <div className="announce-bar">
+            50% Sale on July 4th 2026
+            </div>
                 <div
                   class="announcement-bar__announcement"
                   role="region"
