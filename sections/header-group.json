@@ -14,14 +14,14 @@
     "announcement-bar": {
       "type": "announcement-bar",
       "blocks": {
-        "announcement_VF34Rc": {
+        "announcement_ftxKyb": {
           "type": "announcement",
           "settings": {
-            "text": "Welcome to our store",
-            "link": ""
+            "text": "50% ALL ITEMS",
+            "link": "shopify://collections/dr-martens"
           }
         },
-        "announcement-bar-0": {
+        "announcement_WJmR7y": {
           "type": "announcement",
           "settings": {
             "text": "Welcome to our store",
@@ -30,8 +30,8 @@
         }
       },
       "block_order": [
-        "announcement_VF34Rc",
-        "announcement-bar-0"
+        "announcement_ftxKyb",
+        "announcement_WJmR7y"
       ],
       "settings": {
         "auto_rotate": false,
