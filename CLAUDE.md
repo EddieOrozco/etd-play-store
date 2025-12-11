@@ -1,0 +1,1 @@
+/Users/eddthedev/etd-play-store/AGENTS.md
