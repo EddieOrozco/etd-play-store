@@ -1,0 +1,17 @@
+.announcement-wrapper {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.announcement-bar {
+  padding: 15px 20px;
+  text-align: center;
+  margin: 0 auto;
+  font-weight: 500;
+}
+
+.announcement-bar a {
+  text-decoration: none;
+  font-weight: 500;
+}
