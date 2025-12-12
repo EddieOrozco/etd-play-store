@@ -35,11 +35,11 @@ ANNOUNCEMENT BAR - TOGGLE BETWEEN CUSTOM OR BLOCKS
   {%- comment -%} CUSTOM ANNOUNCEMENT MODE {%- endcomment -%}
   <div 
     class="announcement-wrapper" 
-    style="background-color: {{ section.settings.background_color }}; width: 100%; margin: 0; padding: 0;"
+    style="background-color: {{ section.settings.background_color }};"
   >
     <div 
       class="custom-announcement-bar page-width" 
-      style="color: {{ section.settings.announcement_text_color }}; padding: 15px 20px; text-align: center; margin: 0 auto; font-weight: 500;"
+      style="color: {{ section.settings.announcement_text_color }};"
       role="region" 
       aria-label="{{ 'sections.header.announcement' | t }}"
     >
@@ -47,7 +47,7 @@ ANNOUNCEMENT BAR - TOGGLE BETWEEN CUSTOM OR BLOCKS
         {%- if section.settings.custom_announcement_link != blank -%}
           <a
             href="{{ section.settings.custom_announcement_link }}"
-            style="color: {{ section.settings.announcement_text_color }}; text-decoration: none;"
+            style="color: {{ section.settings.announcement_text_color }};"
           >
             {{ section.settings.custom_announcement_text }}
           </a>
@@ -65,20 +65,20 @@ ANNOUNCEMENT BAR - TOGGLE BETWEEN CUSTOM OR BLOCKS
     {%- comment -%} SINGLE BLOCK ANNOUNCEMENT {%- endcomment -%}
     <div 
       class="announcement-wrapper" 
-      style="background-color: {{ section.settings.background_color }}; width: 100%; margin: 0; padding: 0;"
+      style="background-color: {{ section.settings.background_color }};"
     >
       <div 
         class="announcement-bar page-width" 
-        style="color: {{ section.settings.announcement_text_color }}; padding: 15px 20px; text-align: center; margin: 0 auto;"
+        style="color: {{ section.settings.announcement_text_color }};"
         role="region" 
         aria-label="{{ 'sections.header.announcement' | t }}" 
         {{ section.blocks.first.shopify_attributes }}
       >
         {%- if section.blocks.first.settings.text != blank -%}
           {%- if section.blocks.first.settings.link != blank -%}
-            
+            <a
               href="{{ section.blocks.first.settings.link }}"
-              style="color: {{ section.settings.announcement_text_color }}; text-decoration: none; font-weight: 500;"
+              style="color: {{ section.settings.announcement_text_color }};"
             >
               {{ section.blocks.first.settings.text | escape }}
             </a>
