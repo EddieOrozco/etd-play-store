@@ -45,7 +45,7 @@ ANNOUNCEMENT BAR - TOGGLE BETWEEN CUSTOM OR BLOCKS
     >
       {%- if section.settings.custom_announcement_text != blank -%}
         {%- if section.settings.custom_announcement_link != blank -%}
-          
+          <a
             href="{{ section.settings.custom_announcement_link }}"
             style="color: {{ section.settings.announcement_text_color }}; text-decoration: none;"
           >
