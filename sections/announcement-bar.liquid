@@ -1,5 +1,6 @@
 {{ 'component-slideshow.css' | asset_url | stylesheet_tag }}
 {{ 'component-slider.css' | asset_url | stylesheet_tag }}
+{{ 'announcement-bar.css' | asset_url | stylesheet_tag }}
 
 {%- liquid
   assign social_icons = true
@@ -20,14 +21,8 @@
 
 {%- comment -%}
 =============================================================
-CUSTOM ANNOUNCEMENT BAR
-Client can toggle between custom announcement or blocks
-=============================================================
-{%- endcomment -%}
-
-{%- comment -%}
-=============================================================
-ANNOUNCEMENT BAR - TOGGLE BETWEEN CUSTOM OR BLOCKS
+ANNOUNCEMENT BAR
+Toggle between custom announcement or block-based announcements
 =============================================================
 {%- endcomment -%}
 
@@ -83,7 +78,7 @@ ANNOUNCEMENT BAR - TOGGLE BETWEEN CUSTOM OR BLOCKS
               {{ section.blocks.first.settings.text | escape }}
             </a>
           {%- else -%}
-            <span style="font-weight: 500;">{{ section.blocks.first.settings.text | escape }}</span>
+            <span>{{ section.blocks.first.settings.text | escape }}</span>
           {%- endif -%}
         {%- endif -%}
       </div>
@@ -93,11 +88,10 @@ ANNOUNCEMENT BAR - TOGGLE BETWEEN CUSTOM OR BLOCKS
     {%- comment -%} MULTIPLE ANNOUNCEMENTS (SLIDER) {%- endcomment -%}
     <div 
       class="announcement-wrapper" 
-      style="background-color: {{ section.settings.background_color }}; width: 100%; margin: 0; padding: 0;"
+      style="background-color: {{ section.settings.background_color }};"
     >
       <slideshow-component
         class="announcement-bar page-width"
-        style="margin: 0 auto;"
         role="region"
         aria-roledescription="{{ 'sections.announcements.carousel' | t }}"
         aria-label="{{ 'sections.announcements.announcement_bar' | t }}"
@@ -109,6 +103,7 @@ ANNOUNCEMENT BAR - TOGGLE BETWEEN CUSTOM OR BLOCKS
             name="previous"
             aria-label="{{ 'sections.announcements.previous_announcement' | t }}"
             aria-controls="Slider-{{ section.id }}"
+            style="color: {{ section.settings.announcement_text_color }};"
           >
             <span class="svg-wrapper">
               {{- 'icon-caret.svg' | inline_asset_content -}}
@@ -143,10 +138,10 @@ ANNOUNCEMENT BAR - TOGGLE BETWEEN CUSTOM OR BLOCKS
                     {%- if block.settings.link != blank -%}
                       <a
                         href="{{ block.settings.link }}"
-                        style="color: {{ section.settings.announcement_text_color }}; text-decoration: none;"
+                        style="color: {{ section.settings.announcement_text_color }};"
                       >
                     {%- endif -%}
-                    <p class="announcement-bar__message h5" style="margin: 0;">
+                    <p class="announcement-bar__message h5">
                       <span>{{ block.settings.text | escape }}</span>
                     </p>
                     {%- if block.settings.link != blank -%}
@@ -164,6 +159,7 @@ ANNOUNCEMENT BAR - TOGGLE BETWEEN CUSTOM OR BLOCKS
             name="next"
             aria-label="{{ 'sections.announcements.next_announcement' | t }}"
             aria-controls="Slider-{{ section.id }}"
+            style="color: {{ section.settings.announcement_text_color }};"
           >
             <span class="svg-wrapper">
               {{- 'icon-caret.svg' | inline_asset_content -}}
@@ -176,6 +172,7 @@ ANNOUNCEMENT BAR - TOGGLE BETWEEN CUSTOM OR BLOCKS
     {%- if request.design_mode -%}
       <script src="{{ 'theme-editor.js' | asset_url }}" defer="defer"></script>
       <style>
+        /* Theme editor preview fix */
         .announcement-bar-slider .slider__slide[aria-hidden='true'] {
           visibility: hidden;
         }
@@ -199,28 +196,33 @@ ANNOUNCEMENT BAR - TOGGLE BETWEEN CUSTOM OR BLOCKS
       "content": "Custom Announcement"
     },
     {
+      "type": "paragraph",
+      "content": "Enable to show a single custom announcement instead of block-based announcements."
+    },
+    {
       "type": "checkbox",
       "id": "show_custom_announcement",
       "label": "Enable custom announcement",
-      "default": false,
-      "info": "Show a custom announcement instead of blocks"
+      "default": false
     },
     {
       "type": "text",
       "id": "custom_announcement_text",
-      "label": "Custom announcement text",
-      "default": "Welcome to our store!",
-      "info": "Text to display in announcement bar"
+      "label": "Announcement text",
+      "default": "Welcome to our store!"
     },
     {
       "type": "url",
       "id": "custom_announcement_link",
-      "label": "Custom announcement link",
-      "info": "Optional link for the announcement"
+      "label": "Announcement link (optional)"
     },
     {
       "type": "header",
-      "content": "Block Announcement Settings"
+      "content": "Block Announcements"
+    },
+    {
+      "type": "paragraph",
+      "content": "Add announcement blocks in the left sidebar. Enable auto-rotate for multiple announcements."
     },
     {
       "type": "checkbox",
@@ -256,7 +258,7 @@ ANNOUNCEMENT BAR - TOGGLE BETWEEN CUSTOM OR BLOCKS
     },
     {
       "type": "header",
-      "content": "Additional Options"
+      "content": "Additional Settings"
     },
     {
       "type": "checkbox",
