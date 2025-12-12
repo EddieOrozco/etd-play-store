@@ -40,7 +40,7 @@ Client can toggle between custom announcement or blocks
     >
       {%- if section.blocks.first.settings.text != blank -%}
         {%- if section.blocks.first.settings.link != blank -%}
-          
+          <a
             href="{{ section.blocks.first.settings.link }}"
             style="color: {{ section.settings.announcement_text_color }}; text-decoration: none; font-weight: 500;"
           >
