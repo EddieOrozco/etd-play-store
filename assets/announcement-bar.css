@@ -17,6 +17,19 @@
   text-align: center;
   margin: 0 auto;
   font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+}
+
+.announcement-bar span,
+.custom-announcement-bar span,
+.announcement-bar a,
+.custom-announcement-bar a {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1.4;
 }
 
 /* Announcement bar links */
@@ -42,12 +55,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 40px;
+  min-height: 48px;
+  padding: 12px 20px;
 }
 
 .announcement-bar__message {
   margin: 0;
   padding: 0;
+  line-height: 1.4;
 }
 
 .announcement-bar__message span {
