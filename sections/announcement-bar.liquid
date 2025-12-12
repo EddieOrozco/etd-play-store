@@ -25,29 +25,34 @@ Client can toggle between custom announcement or blocks
 =============================================================
 {%- endcomment -%}
 
-{%- if section.blocks.size == 1 -%}
-  {%- comment -%} SINGLE ANNOUNCEMENT {%- endcomment -%}
+{%- comment -%}
+=============================================================
+ANNOUNCEMENT BAR - TOGGLE BETWEEN CUSTOM OR BLOCKS
+=============================================================
+{%- endcomment -%}
+
+{%- if section.settings.show_custom_announcement -%}
+  {%- comment -%} CUSTOM ANNOUNCEMENT MODE {%- endcomment -%}
   <div 
     class="announcement-wrapper" 
     style="background-color: {{ section.settings.background_color }}; width: 100%; margin: 0; padding: 0;"
   >
     <div 
-      class="announcement-bar page-width" 
-      style="color: {{ section.settings.announcement_text_color }}; padding: 15px 20px; text-align: center; margin: 0 auto;"
+      class="custom-announcement-bar page-width" 
+      style="color: {{ section.settings.announcement_text_color }}; padding: 15px 20px; text-align: center; margin: 0 auto; font-weight: 500;"
       role="region" 
-      aria-label="{{ 'sections.header.announcement' | t }}" 
-      {{ section.blocks.first.shopify_attributes }}
+      aria-label="{{ 'sections.header.announcement' | t }}"
     >
-      {%- if section.blocks.first.settings.text != blank -%}
-        {%- if section.blocks.first.settings.link != blank -%}
-          <a
-            href="{{ section.blocks.first.settings.link }}"
-            style="color: {{ section.settings.announcement_text_color }}; text-decoration: none; font-weight: 500;"
+      {%- if section.settings.custom_announcement_text != blank -%}
+        {%- if section.settings.custom_announcement_link != blank -%}
+          
+            href="{{ section.settings.custom_announcement_link }}"
+            style="color: {{ section.settings.announcement_text_color }}; text-decoration: none;"
           >
-            {{ section.blocks.first.settings.text | escape }}
+            {{ section.settings.custom_announcement_text }}
           </a>
         {%- else -%}
-          <span style="font-weight: 500;">{{ section.blocks.first.settings.text | escape }}</span>
+          {{ section.settings.custom_announcement_text }}
         {%- endif -%}
       {%- endif -%}
     </div>
@@ -57,105 +62,116 @@ Client can toggle between custom announcement or blocks
   {%- comment -%} BLOCK-BASED ANNOUNCEMENT MODE {%- endcomment -%}
   
   {%- if section.blocks.size == 1 -%}
-    {%- comment -%} SINGLE ANNOUNCEMENT {%- endcomment -%}
+    {%- comment -%} SINGLE BLOCK ANNOUNCEMENT {%- endcomment -%}
     <div 
-      class="announcement-bar" 
-      style="background-color: {{ section.settings.background_color }}; color: {{ section.settings.announcement_text_color }}; padding: 15px 20px; text-align: center; width: 100%;"
-      role="region" 
-      aria-label="{{ 'sections.header.announcement' | t }}" 
-      {{ section.blocks.first.shopify_attributes }}
+      class="announcement-wrapper" 
+      style="background-color: {{ section.settings.background_color }}; width: 100%; margin: 0; padding: 0;"
     >
-      {%- if section.blocks.first.settings.text != blank -%}
-        {%- if section.blocks.first.settings.link != blank -%}
-          <a
-            href="{{ section.blocks.first.settings.link }}"
-            style="color: {{ section.settings.announcement_text_color }}; text-decoration: none; font-weight: 500;"
-          >
-            {{ section.blocks.first.settings.text | escape }}
-          </a>
-        {%- else -%}
-          <span style="font-weight: 500;">{{ section.blocks.first.settings.text | escape }}</span>
+      <div 
+        class="announcement-bar page-width" 
+        style="color: {{ section.settings.announcement_text_color }}; padding: 15px 20px; text-align: center; margin: 0 auto;"
+        role="region" 
+        aria-label="{{ 'sections.header.announcement' | t }}" 
+        {{ section.blocks.first.shopify_attributes }}
+      >
+        {%- if section.blocks.first.settings.text != blank -%}
+          {%- if section.blocks.first.settings.link != blank -%}
+            
+              href="{{ section.blocks.first.settings.link }}"
+              style="color: {{ section.settings.announcement_text_color }}; text-decoration: none; font-weight: 500;"
+            >
+              {{ section.blocks.first.settings.text | escape }}
+            </a>
+          {%- else -%}
+            <span style="font-weight: 500;">{{ section.blocks.first.settings.text | escape }}</span>
+          {%- endif -%}
         {%- endif -%}
-      {%- endif -%}
+      </div>
     </div>
 
   {%- elsif section.blocks.size > 1 -%}
     {%- comment -%} MULTIPLE ANNOUNCEMENTS (SLIDER) {%- endcomment -%}
-    <slideshow-component
-      class="announcement-bar"
-      role="region"
-      aria-roledescription="{{ 'sections.announcements.carousel' | t }}"
-      aria-label="{{ 'sections.announcements.announcement_bar' | t }}"
+    <div 
+      class="announcement-wrapper" 
+      style="background-color: {{ section.settings.background_color }}; width: 100%; margin: 0; padding: 0;"
     >
-      <div class="announcement-bar-slider slider-buttons">
-        <button
-          type="button"
-          class="slider-button slider-button--prev"
-          name="previous"
-          aria-label="{{ 'sections.announcements.previous_announcement' | t }}"
-          aria-controls="Slider-{{ section.id }}"
-        >
-          <span class="svg-wrapper">
-            {{- 'icon-caret.svg' | inline_asset_content -}}
-          </span>
-        </button>
-        
-        <div
-          class="grid grid--1-col slider slider--everywhere"
-          id="Slider-{{ section.id }}"
-          aria-live="polite"
-          aria-atomic="true"
-          data-autoplay="{{ section.settings.auto_rotate }}"
-          data-speed="{{ section.settings.change_slides_speed }}"
-        >
-          {%- for block in section.blocks -%}
-            <div
-              class="slideshow__slide slider__slide grid__item grid--1-col"
-              id="Slide-{{ section.id }}-{{ forloop.index }}"
-              {{ block.shopify_attributes }}
-              role="group"
-              aria-roledescription="{{ 'sections.announcements.announcement' | t }}"
-              aria-label="{{ forloop.index }} {{ 'general.slider.of' | t }} {{ forloop.length }}"
-              tabindex="-1"
-              style="background-color: {{ section.settings.background_color }}; color: {{ section.settings.announcement_text_color }};"
-            >
+      <slideshow-component
+        class="announcement-bar page-width"
+        style="margin: 0 auto;"
+        role="region"
+        aria-roledescription="{{ 'sections.announcements.carousel' | t }}"
+        aria-label="{{ 'sections.announcements.announcement_bar' | t }}"
+      >
+        <div class="announcement-bar-slider slider-buttons">
+          <button
+            type="button"
+            class="slider-button slider-button--prev"
+            name="previous"
+            aria-label="{{ 'sections.announcements.previous_announcement' | t }}"
+            aria-controls="Slider-{{ section.id }}"
+          >
+            <span class="svg-wrapper">
+              {{- 'icon-caret.svg' | inline_asset_content -}}
+            </span>
+          </button>
+          
+          <div
+            class="grid grid--1-col slider slider--everywhere"
+            id="Slider-{{ section.id }}"
+            aria-live="polite"
+            aria-atomic="true"
+            data-autoplay="{{ section.settings.auto_rotate }}"
+            data-speed="{{ section.settings.change_slides_speed }}"
+          >
+            {%- for block in section.blocks -%}
               <div
-                class="announcement-bar__announcement"
-                role="region"
-                aria-label="{{ 'sections.header.announcement' | t }}"
+                class="slideshow__slide slider__slide grid__item grid--1-col"
+                id="Slide-{{ section.id }}-{{ forloop.index }}"
+                {{ block.shopify_attributes }}
+                role="group"
+                aria-roledescription="{{ 'sections.announcements.announcement' | t }}"
+                aria-label="{{ forloop.index }} {{ 'general.slider.of' | t }} {{ forloop.length }}"
+                tabindex="-1"
               >
-                {%- if block.settings.text != blank -%}
-                  {%- if block.settings.link != blank -%}
-                    <a
-                      href="{{ block.settings.link }}"
-                      style="color: {{ section.settings.announcement_text_color }}; text-decoration: none;"
-                    >
+                <div
+                  class="announcement-bar__announcement"
+                  role="region"
+                  aria-label="{{ 'sections.header.announcement' | t }}"
+                  style="color: {{ section.settings.announcement_text_color }};"
+                >
+                  {%- if block.settings.text != blank -%}
+                    {%- if block.settings.link != blank -%}
+                      
+                        href="{{ block.settings.link }}"
+                        style="color: {{ section.settings.announcement_text_color }}; text-decoration: none;"
+                      >
+                    {%- endif -%}
+                    <p class="announcement-bar__message h5" style="margin: 0;">
+                      <span>{{ block.settings.text | escape }}</span>
+                    </p>
+                    {%- if block.settings.link != blank -%}
+                      </a>
+                    {%- endif -%}
                   {%- endif -%}
-                  <p class="announcement-bar__message h5">
-                    <span>{{ block.settings.text | escape }}</span>
-                  </p>
-                  {%- if block.settings.link != blank -%}
-                    </a>
-                  {%- endif -%}
-                {%- endif -%}
+                </div>
               </div>
-            </div>
-          {%- endfor -%}
+            {%- endfor -%}
+          </div>
+          
+          <button
+            type="button"
+            class="slider-button slider-button--next"
+            name="next"
+            aria-label="{{ 'sections.announcements.next_announcement' | t }}"
+            aria-controls="Slider-{{ section.id }}"
+          >
+            <span class="svg-wrapper">
+              {{- 'icon-caret.svg' | inline_asset_content -}}
+            </span>
+          </button>
         </div>
-        
-        <button
-          type="button"
-          class="slider-button slider-button--next"
-          name="next"
-          aria-label="{{ 'sections.announcements.next_announcement' | t }}"
-          aria-controls="Slider-{{ section.id }}"
-        >
-          <span class="svg-wrapper">
-            {{- 'icon-caret.svg' | inline_asset_content -}}
-          </span>
-        </button>
-      </div>
-    </slideshow-component>
+      </slideshow-component>
+    </div>
     
     {%- if request.design_mode -%}
       <script src="{{ 'theme-editor.js' | asset_url }}" defer="defer"></script>
