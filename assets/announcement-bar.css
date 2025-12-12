@@ -1,17 +1,133 @@
+/* ===============================================
+   ANNOUNCEMENT BAR STYLES
+   Production-ready CSS for announcement bar section
+   =============================================== */
+
+/* Full-width wrapper for background color */
 .announcement-wrapper {
   width: 100%;
   margin: 0;
   padding: 0;
 }
 
-.announcement-bar {
+/* Main announcement bar container */
+.announcement-bar,
+.custom-announcement-bar {
   padding: 15px 20px;
   text-align: center;
   margin: 0 auto;
   font-weight: 500;
 }
 
-.announcement-bar a {
+/* Announcement bar links */
+.announcement-bar a,
+.custom-announcement-bar a {
   text-decoration: none;
   font-weight: 500;
+  transition: opacity 0.2s ease;
+}
+
+.announcement-bar a:hover,
+.custom-announcement-bar a:hover {
+  opacity: 0.8;
+}
+
+/* Single announcement specific styles */
+.announcement-bar span {
+  font-weight: 500;
+}
+
+/* Slider announcements */
+.announcement-bar__announcement {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+}
+
+.announcement-bar__message {
+  margin: 0;
+  padding: 0;
+}
+
+.announcement-bar__message span {
+  display: inline-block;
+}
+
+/* Slider buttons */
+.announcement-bar-slider {
+  position: relative;
+}
+
+.announcement-bar-slider .slider-button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.announcement-bar-slider .slider-button:hover {
+  opacity: 1;
+}
+
+.announcement-bar-slider .slider-button svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 749px) {
+  .announcement-bar,
+  .custom-announcement-bar {
+    padding: 12px 15px;
+    font-size: 13px;
+  }
+  
+  .announcement-bar__message {
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .announcement-bar,
+  .custom-announcement-bar {
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+  
+  .announcement-bar__message {
+    font-size: 12px;
+  }
+}
+
+/* Accessibility improvements */
+.announcement-bar a:focus,
+.custom-announcement-bar a:focus {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+/* Hide slider buttons when not needed */
+.announcement-bar-slider .slider-button--prev,
+.announcement-bar-slider .slider-button--next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+.announcement-bar-slider .slider-button--prev {
+  left: 10px;
+}
+
+.announcement-bar-slider .slider-button--next {
+  right: 10px;
+}
+
+/* Ensure proper spacing for page-width container */
+.announcement-bar.page-width,
+.custom-announcement-bar.page-width {
+  max-width: var(--page-width, 1200px);
 }
