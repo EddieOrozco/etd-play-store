@@ -25,26 +25,32 @@ Client can toggle between custom announcement or blocks
 =============================================================
 {%- endcomment -%}
 
-{%- if section.settings.show_custom_announcement -%}
-  {%- comment -%} CUSTOM ANNOUNCEMENT MODE {%- endcomment -%}
+{%- if section.blocks.size == 1 -%}
+  {%- comment -%} SINGLE ANNOUNCEMENT {%- endcomment -%}
   <div 
-    class="custom-announcement-bar" 
-    style="background-color: {{ section.settings.background_color }}; color: {{ section.settings.announcement_text_color }}; padding: 15px 20px; text-align: center; width: 100%; font-weight: 500;"
-    role="region" 
-    aria-label="{{ 'sections.header.announcement' | t }}"
+    class="announcement-wrapper" 
+    style="background-color: {{ section.settings.background_color }}; width: 100%; margin: 0; padding: 0;"
   >
-    {%- if section.settings.custom_announcement_text != blank -%}
-      {%- if section.settings.custom_announcement_link != blank -%}
-        <a
-          href="{{ section.settings.custom_announcement_link }}"
-          style="color: {{ section.settings.announcement_text_color }}; text-decoration: none;"
-        >
-          {{ section.settings.custom_announcement_text }}
-        </a>
-      {%- else -%}
-        {{ section.settings.custom_announcement_text }}
+    <div 
+      class="announcement-bar page-width" 
+      style="color: {{ section.settings.announcement_text_color }}; padding: 15px 20px; text-align: center; margin: 0 auto;"
+      role="region" 
+      aria-label="{{ 'sections.header.announcement' | t }}" 
+      {{ section.blocks.first.shopify_attributes }}
+    >
+      {%- if section.blocks.first.settings.text != blank -%}
+        {%- if section.blocks.first.settings.link != blank -%}
+          
+            href="{{ section.blocks.first.settings.link }}"
+            style="color: {{ section.settings.announcement_text_color }}; text-decoration: none; font-weight: 500;"
+          >
+            {{ section.blocks.first.settings.text | escape }}
+          </a>
+        {%- else -%}
+          <span style="font-weight: 500;">{{ section.blocks.first.settings.text | escape }}</span>
+        {%- endif -%}
       {%- endif -%}
-    {%- endif -%}
+    </div>
   </div>
 
 {%- else -%}
