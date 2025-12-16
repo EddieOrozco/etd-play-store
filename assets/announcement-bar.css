@@ -41,6 +41,23 @@
   transition: opacity 0.2s ease;
 }
 
+/* Custom hover color (when enabled) */
+.announcement-bar.has-hover-color a:hover,
+.custom-announcement-bar.has-hover-color a:hover,
+.announcement-bar__announcement.has-hover-color a:hover {
+  color: var(--hover-color);
+  filter: none; /* Remove brightness filter when using custom color */
+}
+
+/* Focus states */
+.announcement-bar a:focus,
+.custom-announcement-bar a:focus,
+.announcement-bar__announcement a:focus {
+  color: inherit;
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
 .announcement-bar a:hover,
 .custom-announcement-bar a:hover {
   text-decoration: underline;
