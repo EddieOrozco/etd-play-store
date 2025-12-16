@@ -27,7 +27,7 @@
 .custom-announcement-bar,
 .announcement-bar,
 .announcement-bar__message {
-  font-size: 1.2rem;
+  font-size: 1.2rem !important;
 }
 
 /* Text + link baseline */
