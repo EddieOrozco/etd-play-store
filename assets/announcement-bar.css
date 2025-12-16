@@ -157,7 +157,6 @@
   }
 
   .announcement-bar__message,
-  .announcement-bar__message,
   .custom-announcement-bar,
   .announcement-bar,
   .announcement-bar__message span {
@@ -171,7 +170,6 @@
     padding: 10px 12px;
   }
 
-  .announcement-bar__message,
   .announcement-bar__message,
   .custom-announcement-bar,
   .announcement-bar,
