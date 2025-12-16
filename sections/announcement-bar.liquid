@@ -28,26 +28,26 @@ Toggle between custom announcement or block-based announcements
 
 {%- if section.settings.show_custom_announcement -%}
   {%- comment -%} CUSTOM ANNOUNCEMENT MODE {%- endcomment -%}
-  <div 
-    class="announcement-wrapper" 
+  <div
+    class="announcement-wrapper"
     style="background-color: {{ section.settings.background_color }};"
   >
-    <div 
-      class="custom-announcement-bar page-width{% if section.settings.enable_hover_color %} has-hover-color{% endif %}" 
+    <div
+      class="custom-announcement-bar page-width{% if section.settings.enable_hover_color %} has-hover-color{% endif %}"
       style="
         color: {{ section.settings.announcement_text_color }};
         {% if section.settings.enable_hover_color %}--hover-color: {{ section.settings.announcement_hover_color }};{% endif %}
       "
-      role="region" 
+      role="region"
       aria-label="{{ 'sections.header.announcement' | t }}"
     >
       {%- if section.settings.custom_announcement_text != blank -%}
         {%- if section.settings.custom_announcement_link != blank -%}
           <a href="{{ section.settings.custom_announcement_link }}">
-            {{ section.settings.custom_announcement_text }}
+            {{ section.settings.custom_announcement_text | escape }}
           </a>
         {%- else -%}
-          {{ section.settings.custom_announcement_text }}
+          <span>{{ section.settings.custom_announcement_text | escape }}</span>
         {%- endif -%}
       {%- endif -%}
     </div>
@@ -55,21 +55,21 @@ Toggle between custom announcement or block-based announcements
 
 {%- else -%}
   {%- comment -%} BLOCK-BASED ANNOUNCEMENT MODE {%- endcomment -%}
-  
+
   {%- if section.blocks.size == 1 -%}
     {%- comment -%} SINGLE BLOCK ANNOUNCEMENT {%- endcomment -%}
-    <div 
-      class="announcement-wrapper" 
+    <div
+      class="announcement-wrapper"
       style="background-color: {{ section.settings.background_color }};"
     >
-      <div 
-        class="announcement-bar page-width{% if section.settings.enable_hover_color %} has-hover-color{% endif %}" 
+      <div
+        class="announcement-bar page-width{% if section.settings.enable_hover_color %} has-hover-color{% endif %}"
         style="
           color: {{ section.settings.announcement_text_color }};
           {% if section.settings.enable_hover_color %}--hover-color: {{ section.settings.announcement_hover_color }};{% endif %}
         "
-        role="region" 
-        aria-label="{{ 'sections.header.announcement' | t }}" 
+        role="region"
+        aria-label="{{ 'sections.header.announcement' | t }}"
         {{ section.blocks.first.shopify_attributes }}
       >
         {%- if section.blocks.first.settings.text != blank -%}
@@ -86,8 +86,8 @@ Toggle between custom announcement or block-based announcements
 
   {%- elsif section.blocks.size > 1 -%}
     {%- comment -%} MULTIPLE ANNOUNCEMENTS (SLIDER) {%- endcomment -%}
-    <div 
-      class="announcement-wrapper" 
+    <div
+      class="announcement-wrapper"
       style="background-color: {{ section.settings.background_color }};"
     >
       <slideshow-component
@@ -97,6 +97,7 @@ Toggle between custom announcement or block-based announcements
         aria-label="{{ 'sections.announcements.announcement_bar' | t }}"
       >
         <div class="announcement-bar-slider slider-buttons">
+
           <button
             type="button"
             class="slider-button slider-button--prev"
@@ -109,7 +110,7 @@ Toggle between custom announcement or block-based announcements
               {{- 'icon-caret.svg' | inline_asset_content -}}
             </span>
           </button>
-          
+
           <div
             class="grid grid--1-col slider slider--everywhere"
             id="Slider-{{ section.id }}"
@@ -141,9 +142,11 @@ Toggle between custom announcement or block-based announcements
                     {%- if block.settings.link != blank -%}
                       <a href="{{ block.settings.link }}">
                     {%- endif -%}
+
                     <p class="announcement-bar__message h5">
                       <span>{{ block.settings.text | escape }}</span>
                     </p>
+
                     {%- if block.settings.link != blank -%}
                       </a>
                     {%- endif -%}
@@ -152,7 +155,7 @@ Toggle between custom announcement or block-based announcements
               </div>
             {%- endfor -%}
           </div>
-          
+
           <button
             type="button"
             class="slider-button slider-button--next"
@@ -165,21 +168,21 @@ Toggle between custom announcement or block-based announcements
               {{- 'icon-caret.svg' | inline_asset_content -}}
             </span>
           </button>
+
         </div>
       </slideshow-component>
     </div>
-    
+
     {%- if request.design_mode -%}
       <script src="{{ 'theme-editor.js' | asset_url }}" defer="defer"></script>
       <style>
-        /* Theme editor preview fix */
         .announcement-bar-slider .slider__slide[aria-hidden='true'] {
           visibility: hidden;
         }
       </style>
     {%- endif -%}
   {%- endif -%}
-  
+
 {%- endif -%}
 
 {% schema %}
@@ -249,7 +252,7 @@ Toggle between custom announcement or block-based announcements
       "id": "background_color",
       "label": "Background color",
       "default": "#605e7d"
-    },  
+    },
     {
       "type": "color",
       "id": "announcement_text_color",
