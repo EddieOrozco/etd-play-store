@@ -42,10 +42,10 @@
 
 .announcement-bar a:hover,
 .custom-announcement-bar a:hover {
-  text-decoration: underline;
+  /* text-decoration: underline;
   text-underline-offset: 3px;
-  filter: brightness(1.15);
-  /* opacity: 0.8; */
+  filter: brightness(1.15); */
+  opacity: 0.8;
 }
 
 /* Single announcement specific styles */
