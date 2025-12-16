@@ -23,6 +23,13 @@
   min-height: 48px;
 }
 
+/* Announcement bar text size */
+.custom-announcement-bar,
+.announcement-bar,
+.announcement-bar__message {
+  font-size: 1.2rem;
+}
+
 /* Text + link baseline */
 .announcement-bar span,
 .custom-announcement-bar span,
