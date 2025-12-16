@@ -23,6 +23,7 @@
   min-height: 48px;
 }
 
+/* Text + link baseline */
 .announcement-bar span,
 .custom-announcement-bar span,
 .announcement-bar a,
@@ -34,11 +35,21 @@
 
 /* Announcement bar links */
 .announcement-bar a,
-.custom-announcement-bar a {
-  color: inherit; 
+.custom-announcement-bar a,
+.announcement-bar__announcement a {
+  color: inherit;
   text-decoration: none;
   font-weight: 500;
-  transition: opacity 0.2s ease;
+  transition: opacity 0.2s ease, color 0.2s ease, filter 0.2s ease;
+}
+
+/* Default hover behavior (no custom hover color) */
+.announcement-bar a:hover,
+.custom-announcement-bar a:hover,
+.announcement-bar__announcement a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  filter: brightness(1.15);
 }
 
 /* Custom hover color (when enabled) */
@@ -46,7 +57,7 @@
 .custom-announcement-bar.has-hover-color a:hover,
 .announcement-bar__announcement.has-hover-color a:hover {
   color: var(--hover-color);
-  filter: none; /* Remove brightness filter when using custom color */
+  filter: none;
 }
 
 /* Focus states */
@@ -56,14 +67,6 @@
   color: inherit;
   outline: 2px solid currentColor;
   outline-offset: 2px;
-}
-
-.announcement-bar a:hover,
-.custom-announcement-bar a:hover {
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  filter: brightness(1.15);
-  /* opacity: 0.8; */
 }
 
 /* Single announcement specific styles */
@@ -78,6 +81,7 @@
   justify-content: center;
   min-height: 48px;
   padding: 12px 20px;
+  text-align: center;
 }
 
 .announcement-bar__message {
@@ -89,11 +93,12 @@
   display: inline-block;
 }
 
-/* Slider buttons */
+/* Slider buttons wrapper */
 .announcement-bar-slider {
   position: relative;
 }
 
+/* Slider buttons */
 .announcement-bar-slider .slider-button {
   background: transparent;
   border: none;
@@ -112,39 +117,7 @@
   height: 16px;
 }
 
-/* Responsive adjustments */
-@media screen and (max-width: 749px) {
-  .announcement-bar,
-  .custom-announcement-bar {
-    padding: 12px 15px;
-    font-size: 13px;
-  }
-  
-  .announcement-bar__message {
-    font-size: 13px;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .announcement-bar,
-  .custom-announcement-bar {
-    padding: 10px 12px;
-    font-size: 12px;
-  }
-  
-  .announcement-bar__message {
-    font-size: 12px;
-  }
-}
-
-/* Accessibility improvements */
-.announcement-bar a:focus,
-.custom-announcement-bar a:focus {
-  outline: 2px solid currentColor;
-  outline-offset: 2px;
-}
-
-/* Hide slider buttons when not needed */
+/* Position slider buttons */
 .announcement-bar-slider .slider-button--prev,
 .announcement-bar-slider .slider-button--next {
   position: absolute;
@@ -165,4 +138,29 @@
 .announcement-bar.page-width,
 .custom-announcement-bar.page-width {
   max-width: var(--page-width, 1200px);
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 749px) {
+  .announcement-bar,
+  .custom-announcement-bar {
+    padding: 12px 15px;
+    font-size: 13px;
+  }
+
+  .announcement-bar__message {
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .announcement-bar,
+  .custom-announcement-bar {
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .announcement-bar__message {
+    font-size: 12px;
+  }
 }
