@@ -136,11 +136,11 @@
 }
 
 .announcement-bar-slider .slider-button--prev {
-  left: 10px;
+  left: 0px;
 }
 
 .announcement-bar-slider .slider-button--next {
-  right: 10px;
+  right: 0px;
 }
 
 /* Ensure proper spacing for page-width container */
