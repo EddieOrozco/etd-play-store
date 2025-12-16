@@ -149,6 +149,12 @@
   max-width: var(--page-width, 1200px);
 }
 
+/* Ensure underline shows for slider announcement links */
+.announcement-bar__announcement a:hover span {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 /* Responsive adjustments */
 @media screen and (max-width: 749px) {
   .announcement-bar,
