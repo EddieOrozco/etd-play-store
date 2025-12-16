@@ -27,7 +27,6 @@
 .custom-announcement-bar,
 .announcement-bar,
 .announcement-bar__message,
-.announcement-bar__message.h5,
 .announcement-bar__message span {
   font-size: 1.2rem;
   color: #ffffff;
@@ -158,7 +157,7 @@
   }
 
   .announcement-bar__message,
-  .announcement-bar__message.h5,
+  .announcement-bar__message,
   .custom-announcement-bar,
   .announcement-bar,
   .announcement-bar__message span {
@@ -173,7 +172,7 @@
   }
 
   .announcement-bar__message,
-  .announcement-bar__message.h5,
+  .announcement-bar__message,
   .custom-announcement-bar,
   .announcement-bar,
   .announcement-bar__message span {
