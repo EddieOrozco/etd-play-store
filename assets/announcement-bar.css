@@ -13,11 +13,10 @@
 /* Main announcement bar container */
 .announcement-bar,
 .custom-announcement-bar {
-  padding: 15px 0px;
+  padding: 10px 20px;
   text-align: center;
   margin: 0 auto;
-  font-size: 1.2rem;
-  font-weight: 700;
+  font-weight: 500;
   display: flex;
   align-items: center;
   justify-content: center;
