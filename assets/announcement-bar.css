@@ -23,12 +23,13 @@
   min-height: 48px;
 }
 
-/* Announcement bar text styling */
+/* Announcement bar text styling (desktop default) */
 .custom-announcement-bar,
 .announcement-bar,
 .announcement-bar__message,
+.announcement-bar__message.h5,
 .announcement-bar__message span {
-  font-size: 1.2rem !important;
+  font-size: 1.2rem;
   color: #ffffff;
 }
 
@@ -154,11 +155,14 @@
   .announcement-bar,
   .custom-announcement-bar {
     padding: 12px 15px;
-    font-size: 13px;
   }
 
-  .announcement-bar__message {
-    font-size: 13px;
+  .announcement-bar__message,
+  .announcement-bar__message.h5,
+  .custom-announcement-bar,
+  .announcement-bar,
+  .announcement-bar__message span {
+    font-size: 1.05rem;
   }
 }
 
@@ -166,10 +170,14 @@
   .announcement-bar,
   .custom-announcement-bar {
     padding: 10px 12px;
-    font-size: 12px;
   }
 
-  .announcement-bar__message {
-    font-size: 12px;
+  .announcement-bar__message,
+  .announcement-bar__message.h5,
+  .custom-announcement-bar,
+  .announcement-bar,
+  .announcement-bar__message span {
+    font-size: 0.95rem;
   }
 }
+
