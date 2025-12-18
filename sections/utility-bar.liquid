@@ -1,0 +1,43 @@
+{% schema %}
+{
+  "name": "Utility Bar",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_utility_bar",
+      "label": "Enable Utility Bar",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "utility_bar_text",
+      "label": "Utility Bar Text",
+      "default": "Free shipping on orders over $50!"
+    },
+    // {
+    //   "type": "url",
+    //   "id": "utility_bar_link",
+    //   "label": "Utility Bar Link",
+    //   "default": ""
+    // },
+    {
+      "type": "color",
+      "id": "utility_bar_background_color",
+      "label": "Background Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "utility_bar_text_color",
+      "label": "Text Color",
+      "default": "#FFFFFF"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Utility Bar",
+      "category": "Header"
+    }
+  ]
+}
+{% endschema %}
