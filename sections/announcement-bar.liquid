@@ -52,8 +52,8 @@ Toggle between custom announcement or block-based announcements
       {%- endif -%}
     </div>
   </div>
-
 {%- else -%}
+
   {%- comment -%} BLOCK-BASED ANNOUNCEMENT MODE {%- endcomment -%}
 
   {%- if section.blocks.size == 1 -%}
@@ -83,9 +83,10 @@ Toggle between custom announcement or block-based announcements
         {%- endif -%}
       </div>
     </div>
-
   {%- elsif section.blocks.size > 1 -%}
+
     {%- comment -%} MULTIPLE ANNOUNCEMENTS (SLIDER) {%- endcomment -%}
+
     <div
       class="announcement-wrapper"
       style="background-color: {{ section.settings.background_color }};"
@@ -97,7 +98,6 @@ Toggle between custom announcement or block-based announcements
         aria-label="{{ 'sections.announcements.announcement_bar' | t }}"
       >
         <div class="announcement-bar-slider slider-buttons">
-
           <button
             type="button"
             class="slider-button slider-button--prev"
@@ -110,7 +110,6 @@ Toggle between custom announcement or block-based announcements
               {{- 'icon-caret.svg' | inline_asset_content -}}
             </span>
           </button>
-
           <div
             class="grid grid--1-col slider slider--everywhere"
             id="Slider-{{ section.id }}"
@@ -155,7 +154,6 @@ Toggle between custom announcement or block-based announcements
               </div>
             {%- endfor -%}
           </div>
-
           <button
             type="button"
             class="slider-button slider-button--next"
@@ -168,11 +166,11 @@ Toggle between custom announcement or block-based announcements
               {{- 'icon-caret.svg' | inline_asset_content -}}
             </span>
           </button>
-
         </div>
       </slideshow-component>
     </div>
-
+  
+    {%- comment -%} Load theme editor script in design mode to show hidden slides {%- endcomment -%}
     {%- if request.design_mode -%}
       <script src="{{ 'theme-editor.js' | asset_url }}" defer="defer"></script>
       <style>
@@ -182,7 +180,6 @@ Toggle between custom announcement or block-based announcements
       </style>
     {%- endif -%}
   {%- endif -%}
-
 {%- endif -%}
 
 {% schema %}
