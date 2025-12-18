@@ -10,5 +10,8 @@
          "list.activeSelectionBackground": "#ba2e45", 
         // "list.inactiveSelectionBackground": "#ba2e45" 
     },
-    "html.format.wrapAttributes": "aligned-multiple"
+    "html.format.wrapAttributes": "aligned-multiple",
+    "editor.lineHeight": 23,
+    "editor.suggestLineHeight": 0,
+    "debug.console.lineHeight": 0
 }
