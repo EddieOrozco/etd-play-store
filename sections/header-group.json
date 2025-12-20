@@ -44,7 +44,10 @@
     },
     "utility-bar": {
       "type": "utility-bar",
-      "settings": {}
+      "settings": {
+        "color_scheme": "scheme-1",
+        "logo_position": "middle-left"
+      }
     },
     "header": {
       "type": "header",
