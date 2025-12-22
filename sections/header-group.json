@@ -45,8 +45,11 @@
     "utility-bar": {
       "type": "utility-bar",
       "settings": {
+        "enable_utility_bar": true,
+        "utility_bar_width": "full-width",
+        "utility_bar_sticky": "none",
         "color_scheme": "scheme-1",
-        "logo_position": "middle-left"
+        "link_count": "2"
       }
     },
     "header": {
