@@ -1,9 +1,20 @@
-<div class="utility-bar-wrapper">
-    test
-    <div class="utility-bar-page-wrapper">
-        test1
+{% if section.settings.enable_utility_bar %}
+<div class="utility-bar">
+  <div class="utility-bar__inner">
+    <div class="utility-bar__zone utility-bar__zone--left">
+      <!-- LEFT ZONE -->
     </div>
+
+    <div class="utility-bar__zone utility-bar__zone--center">
+      <!-- CENTER ZONE -->
+    </div>
+
+    <div class="utility-bar__zone utility-bar__zone--right">
+      <!-- RIGHT ZONE -->
+    </div>
+  </div>
 </div>
+{% endif %}
 
 {% schema %}
 {
