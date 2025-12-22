@@ -9,11 +9,15 @@
     </div>
 
     <div class="utility-bar__zone utility-bar__zone--center">
-      CENTER ZONE
+      {% if section.settings.logo_position == 'center' %}
+        LOGO
+      {% endif %}
     </div>
 
     <div class="utility-bar__zone utility-bar__zone--right">
-      RIGHT ZONE
+      {% if section.settings.logo_position == 'right' %}
+        LOGO
+      {% endif %}
     </div>
   </div>
   
