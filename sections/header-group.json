@@ -46,10 +46,23 @@
       "type": "utility-bar",
       "settings": {
         "enable_utility_bar": true,
-        "utility_bar_width": "full-width",
+        "utility_bar_width": "page-width",
         "utility_bar_sticky": "none",
         "color_scheme": "scheme-1",
-        "link_count": "2"
+        "logo_position": "left",
+        "search_position": "center",
+        "search_full_width": false,
+        "links_position": "right",
+        "link_count": "2",
+        "link_1_label": "",
+        "link_1_url": "",
+        "link_2_label": "",
+        "link_2_url": "",
+        "link_3_label": "",
+        "link_3_url": "",
+        "link_4_label": "",
+        "link_4_url": "",
+        "mobile_layout": "stack"
       }
     },
     "header": {
