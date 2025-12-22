@@ -49,7 +49,7 @@
         "utility_bar_width": "full-width",
         "utility_bar_sticky": "none",
         "color_scheme": "scheme-1",
-        "logo_position": "right",
+        "logo_position": "left",
         "search_position": "center",
         "search_full_width": false,
         "links_position": "right",
