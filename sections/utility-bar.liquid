@@ -1,5 +1,6 @@
 {% if section.settings.enable_utility_bar %}
 <div class="utility-bar utility-bar--{{ section.settings.utility_bar_width }} {% if section.settings.utility_bar_sticky == 'always' %} utility-bar--sticky {% endif %} color-{{ section.settings.color_scheme }}">
+
   <div class="utility-bar__inner">
     <div class="utility-bar__zone utility-bar__zone--left">
       <!-- LEFT ZONE -->
@@ -13,6 +14,7 @@
       <!-- RIGHT ZONE -->
     </div>
   </div>
+  
 </div>
 {% endif %}
 
