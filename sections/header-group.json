@@ -46,7 +46,7 @@
       "type": "utility-bar",
       "settings": {
         "enable_utility_bar": true,
-        "utility_bar_width": "page-width",
+        "utility_bar_width": "full-width",
         "utility_bar_sticky": "none",
         "color_scheme": "scheme-1",
         "logo_position": "left",
