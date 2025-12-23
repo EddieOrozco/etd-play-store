@@ -6,17 +6,26 @@
       {% if section.settings.logo_position == 'left' %}
         LOGO
       {% endif %}
+      {% if section.settings.search_position == 'left' %}
+        Search
+      {% endif %}
     </div>
 
     <div class="utility-bar__zone utility-bar__zone--center">
       {% if section.settings.logo_position == 'center' %}
         LOGO
       {% endif %}
+      {% if section.settings.search_position == 'center' %}
+        Search
+      {% endif %}
     </div>
 
     <div class="utility-bar__zone utility-bar__zone--right">
       {% if section.settings.logo_position == 'right' %}
         LOGO
+      {% endif %}
+      {% if section.settings.search_position == 'right' %}
+        Search
       {% endif %}
     </div>
   </div>
