@@ -9,6 +9,9 @@
       {% if section.settings.search_position == 'left' %}
         Search
       {% endif %}
+      {% if section.settings.links_position == 'left' %}
+        LINKS
+      {% endif %}
     </div>
 
     <div class="utility-bar__zone utility-bar__zone--center">
@@ -16,7 +19,10 @@
         LOGO
       {% endif %}
       {% if section.settings.search_position == 'center' %}
-        Search
+        SEARCH
+      {% endif %}
+      {% if section.settings.links_position == 'center' %}
+        LINKS
       {% endif %}
     </div>
 
@@ -25,8 +31,12 @@
         LOGO
       {% endif %}
       {% if section.settings.search_position == 'right' %}
-        Search
+        SEARCH
       {% endif %}
+      {% if section.settings.links_position == 'right' %}
+        LINKS
+      {% endif %}
+      
     </div>
   </div>
   
