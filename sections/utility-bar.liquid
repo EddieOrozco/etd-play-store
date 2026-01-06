@@ -40,7 +40,18 @@
           Search
         {% endif %}
         {% if section.settings.links_position == 'left' %}
-          LINKS
+          <nav class="utility-bar__links">
+            {% assign link_count_number = section.settings.link_count | plus: 0 %}
+            {% for i in (1..link_count_number) %}
+              {% assign label_key = 'link_' | append: i | append: '_label' %}
+              {% assign url_key = 'link_' | append: i | append: '_url' %}
+              {% assign label = section.settings[label_key] %}
+              {% assign url = section.settings[url_key] %}
+              {% if label != blank and url != blank %}
+                <a href="{{ url }}" class="utility-bar__link">{{ label }}</a>
+              {% endif %}
+            {% endfor %}
+          </nav>
         {% endif %}
       </div>
       <div class="utility-bar__zone utility-bar__zone--center">
@@ -51,7 +62,18 @@
           SEARCH
         {% endif %}
         {% if section.settings.links_position == 'center' %}
-          LINKS
+          <nav class="utility-bar__links">
+            {% assign link_count_number = section.settings.link_count | plus: 0 %}
+            {% for i in (1..link_count_number) %}
+              {% assign label_key = 'link_' | append: i | append: '_label' %}
+              {% assign url_key = 'link_' | append: i | append: '_url' %}
+              {% assign label = section.settings[label_key] %}
+              {% assign url = section.settings[url_key] %}
+              {% if label != blank and url != blank %}
+                <a href="{{ url }}" class="utility-bar__link">{{ label }}</a>
+              {% endif %}
+            {% endfor %}
+          </nav>
         {% endif %}
       </div>
       <div class="utility-bar__zone utility-bar__zone--right">
@@ -62,7 +84,18 @@
           SEARCH
         {% endif %}
         {% if section.settings.links_position == 'right' %}
-          LINKS
+          <nav class="utility-bar__links">
+            {% assign link_count_number = section.settings.link_count | plus: 0 %}
+            {% for i in (1..link_count_number) %}
+              {% assign label_key = 'link_' | append: i | append: '_label' %}
+              {% assign url_key = 'link_' | append: i | append: '_url' %}
+              {% assign label = section.settings[label_key] %}
+              {% assign url = section.settings[url_key] %}
+              {% if label != blank and url != blank %}
+                <a href="{{ url }}" class="utility-bar__link">{{ label }}</a>
+              {% endif %}
+            {% endfor %}
+          </nav>
         {% endif %}
       </div>
     </div>
