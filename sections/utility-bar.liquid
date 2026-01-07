@@ -41,7 +41,7 @@
         {% if section.settings.search_position == 'left' %}
           Search
         {% endif %}
-        
+
         {% if section.settings.links_position == 'left' %}
           <nav class="utility-bar__links">
             {% assign link_count_number = section.settings.link_count | plus: 0 %}
@@ -212,7 +212,8 @@
     {
       "type": "text",
       "id": "link_1_label",
-      "label": "Link 1 label"
+      "label": "Link 1 label",
+      "default": "About"
     },
     {
       "type": "url",
@@ -222,7 +223,8 @@
     {
       "type": "text",
       "id": "link_2_label",
-      "label": "Link 2 label"
+      "label": "Link 2 label",
+      "default": "Contact"
     },
     {
       "type": "url",
@@ -232,7 +234,8 @@
     {
       "type": "text",
       "id": "link_3_label",
-      "label": "Link 3 label"
+      "label": "Link 3 label",
+      "default": "FAQ"
     },
     {
       "type": "url",
@@ -242,7 +245,8 @@
     {
       "type": "text",
       "id": "link_4_label",
-      "label": "Link 4 label"
+      "label": "Link 4 label",
+      "default": "Shipping"
     },
     {
       "type": "url",
