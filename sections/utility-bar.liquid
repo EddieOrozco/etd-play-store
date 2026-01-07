@@ -40,7 +40,7 @@
         
         
         {% if section.settings.search_position == 'left' %}
-          <div class="utility-bar__search"></div>
+          <div class="utility-bar__search">
             <form action="{{ routes.search_url }}" method="get" role="search" class="utility-bar__search-form">
               <input type="search" name="q" placeholder="Search..." class="utility-bar__search-input">
               <button type="submit" class="utility-bar__search-button">Search</button>
@@ -70,7 +70,12 @@
           {{ utility_bar_logo }}
         {% endif %}
         {% if section.settings.search_position == 'center' %}
-          SEARCH
+          <div class="utility-bar__search">
+            <form action="{{ routes.search_url }}" method="get" role="search" class="utility-bar__search-form">
+              <input type="search" name="q" placeholder="Search..." class="utility-bar__search-input">
+              <button type="submit" class="utility-bar__search-button">Search</button>
+            </form>
+          </div>
         {% endif %}
         {% if section.settings.links_position == 'center' %}
           <nav class="utility-bar__links">
@@ -92,7 +97,12 @@
           {{ utility_bar_logo }}
         {% endif %}
         {% if section.settings.search_position == 'right' %}
-          SEARCH
+          <div class="utility-bar__search">
+            <form action="{{ routes.search_url }}" method="get" role="search" class="utility-bar__search-form">
+              <input type="search" name="q" placeholder="Search..." class="utility-bar__search-input">
+              <button type="submit" class="utility-bar__search-button">Search</button>
+            </form>
+          </div>
         {% endif %}
         {% if section.settings.links_position == 'right' %}
           <nav class="utility-bar__links">
