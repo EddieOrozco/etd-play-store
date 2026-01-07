@@ -37,10 +37,17 @@
         {% if section.settings.logo_position == 'left' %}
           {{ utility_bar_logo }}
         {% endif %}
-
-        {% if section.settings.search_position == 'left' %}
-          Search
-        {% endif %}
+        
+        <div class="utility-bar__search">
+          {% if section.settings.search_position == 'left' %}
+            <form action="/search" method="get" role="search" class="utility-bar__search-form">
+              <input type="search" name="q" placeholder="Search..." class="utility-bar__search-input">
+              <button type="submit" class="utility-bar__search-button">Search</button>
+            </form>
+          {% endif %}
+          
+        </div>
+        
 
         {% if section.settings.links_position == 'left' %}
           <nav class="utility-bar__links">
