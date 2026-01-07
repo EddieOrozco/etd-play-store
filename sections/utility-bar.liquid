@@ -38,15 +38,16 @@
           {{ utility_bar_logo }}
         {% endif %}
         
-        <div class="utility-bar__search">
-          {% if section.settings.search_position == 'left' %}
-            <form action="/search" method="get" role="search" class="utility-bar__search-form">
+        
+        {% if section.settings.search_position == 'left' %}
+          <div class="utility-bar__search"></div>
+            <form action="{{ routes.search_url }}" method="get" role="search" class="utility-bar__search-form">
               <input type="search" name="q" placeholder="Search..." class="utility-bar__search-input">
               <button type="submit" class="utility-bar__search-button">Search</button>
             </form>
-          {% endif %}
-          
-        </div>
+          </div>
+        {% endif %}
+        
         
 
         {% if section.settings.links_position == 'left' %}
