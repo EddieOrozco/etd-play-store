@@ -1,0 +1,54 @@
+/* Basic Layout */
+.utility-bar__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+.utility-bar__zone {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.utility-bar__zone--left {
+  justify-content: flex-start;
+}
+
+.utility-bar__zone--center {
+  justify-content: center;
+  flex: 1;
+}
+
+.utility-bar__zone--right {
+  justify-content: flex-end;
+}
+
+/* Links styling */
+.utility-bar__links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.utility-bar__link {
+  text-decoration: none;
+  font-size: 0.875rem;
+}
+
+.utility-bar__link:hover {
+  text-decoration: underline;
+}
+
+/* Width variants */
+.utility-bar--page-width .utility-bar__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Sticky behavior */
+.utility-bar--sticky {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}

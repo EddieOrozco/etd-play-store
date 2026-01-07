@@ -1,0 +1,286 @@
+{{ 'component-utility-bar.css' | asset_url | stylesheet_tag }}
+
+{% if section.settings.enable_utility_bar %}
+  {% capture utility_bar_logo %}
+    {%- if request.page_type == 'index' -%}
+          <span class="header__heading">
+    {%- endif -%}
+      <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
+        {%- if settings.logo != blank -%}
+          <div class="header__heading-logo-wrapper">
+            {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
+            {%- assign logo_height = settings.logo_width | divided_by: settings.logo.aspect_ratio -%}
+            {% capture sizes %}(max-width: {{ settings.logo_width | times: 2 }}px) 50vw, {{ settings.logo_width }}px{% endcapture %}
+            {% capture widths %}{{ settings.logo_width }}, {{ settings.logo_width | times: 1.5 | round }}, {{ settings.logo_width | times: 2 }}{% endcapture %}
+            {{ settings.logo | image_url: width: 600 | image_tag:
+              class: 'header__heading-logo motion-reduce',
+              widths: widths,
+              height: logo_height,
+              width: settings.logo_width,
+              alt: logo_alt,
+              sizes: sizes,
+              preload: true
+            }}
+          </div>
+        {%- else -%}
+          <span class="utility-bar__logo-text h2" aria-label="{{ shop.name }}">{{ shop.name }}</span>
+        {%- endif -%}
+      </a>
+    {%- if request.page_type == 'index' -%}
+          </span>
+    {%- endif -%}
+  {% endcapture %}
+
+  <div class="utility-bar utility-bar--{{ section.settings.utility_bar_width }}{% if section.settings.utility_bar_sticky == 'always' %} utility-bar--sticky {% endif %} color-{{ section.settings.color_scheme }}">
+    <div class="utility-bar__inner">
+      <div class="utility-bar__zone utility-bar__zone--left">
+        {% if section.settings.logo_position == 'left' %}
+          {{ utility_bar_logo }}
+        {% endif %}
+
+        {% if section.settings.search_position == 'left' %}
+          Search
+        {% endif %}
+
+        {% if section.settings.links_position == 'left' %}
+          <nav class="utility-bar__links">
+            {% assign link_count_number = section.settings.link_count | plus: 0 %}
+            {% for i in (1..link_count_number) %}
+              {% assign label_key = 'link_' | append: i | append: '_label' %}
+              {% assign url_key = 'link_' | append: i | append: '_url' %}
+              {% assign label = section.settings[label_key] %}
+              {% assign url = section.settings[url_key] %}
+              {% if label != blank and url != blank %}
+                <a href="{{ url }}" class="utility-bar__link">{{ label }}</a>
+              {% endif %}
+            {% endfor %}
+          </nav>
+        {% endif %}
+      </div>
+      <div class="utility-bar__zone utility-bar__zone--center">
+        {% if section.settings.logo_position == 'center' %}
+          {{ utility_bar_logo }}
+        {% endif %}
+        {% if section.settings.search_position == 'center' %}
+          SEARCH
+        {% endif %}
+        {% if section.settings.links_position == 'center' %}
+          <nav class="utility-bar__links">
+            {% assign link_count_number = section.settings.link_count | plus: 0 %}
+            {% for i in (1..link_count_number) %}
+              {% assign label_key = 'link_' | append: i | append: '_label' %}
+              {% assign url_key = 'link_' | append: i | append: '_url' %}
+              {% assign label = section.settings[label_key] %}
+              {% assign url = section.settings[url_key] %}
+              {% if label != blank and url != blank %}
+                <a href="{{ url }}" class="utility-bar__link">{{ label }}</a>
+              {% endif %}
+            {% endfor %}
+          </nav>
+        {% endif %}
+      </div>
+      <div class="utility-bar__zone utility-bar__zone--right">
+        {% if section.settings.logo_position == 'right' %}
+          {{ utility_bar_logo }}
+        {% endif %}
+        {% if section.settings.search_position == 'right' %}
+          SEARCH
+        {% endif %}
+        {% if section.settings.links_position == 'right' %}
+          <nav class="utility-bar__links">
+            {% assign link_count_number = section.settings.link_count | plus: 0 %}
+            {% for i in (1..link_count_number) %}
+              {% assign label_key = 'link_' | append: i | append: '_label' %}
+              {% assign url_key = 'link_' | append: i | append: '_url' %}
+              {% assign label = section.settings[label_key] %}
+              {% assign url = section.settings[url_key] %}
+              {% if label != blank and url != blank %}
+                <a href="{{ url }}" class="utility-bar__link">{{ label }}</a>
+              {% endif %}
+            {% endfor %} 
+          </nav>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+
+
+
+
+{% schema %}
+{
+  "name": "Utility Bar",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_utility_bar",
+      "label": "Enable Utility Bar",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "utility_bar_width",
+      "label": "Utility Bar width",
+      "options": [
+        { "value": "full-width", "label": "Full width" },
+        { "value": "page-width", "label": "Page width" }
+      ],
+      "default": "full-width"
+    },
+    {
+      "type": "select",
+      "id": "utility_bar_sticky",
+      "label": "Sticky behavior",
+      "options": [
+        { "value": "none", "label": "Not sticky" },
+        { "value": "always", "label": "Always sticky" }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "default": "scheme-1",
+      "label": "Color scheme"
+    },
+
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "logo_position",
+      "label": "Logo position",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" },
+        { "value": "none", "label": "None" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "search_position",
+      "label": "Search position",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" },
+        { "value": "none", "label": "None" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "checkbox",
+      "id": "search_full_width",
+      "label": "Make search full width",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "links_position",
+      "label": "Links position",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" },
+        { "value": "none", "label": "None" }
+      ],
+      "default": "right"
+    },
+
+    {
+      "type": "header",
+      "content": "Links"
+    },
+    {
+      "type": "select",
+      "id": "link_count",
+      "label": "Number of links",
+      "options": [
+        { "value": "1", "label": "1 link" },
+        { "value": "2", "label": "2 links" },
+        { "value": "3", "label": "3 links" },
+        { "value": "4", "label": "4 links" }
+      ],
+      "default": "2"
+    },
+    {
+      "type": "text",
+      "id": "link_1_label",
+      "label": "Link 1 label",
+      "default": "About"
+    },
+    {
+      "type": "url",
+      "id": "link_1_url",
+      "label": "Link 1 URL"
+    },
+    {
+      "type": "text",
+      "id": "link_2_label",
+      "label": "Link 2 label",
+      "default": "Contact"
+    },
+    {
+      "type": "url",
+      "id": "link_2_url",
+      "label": "Link 2 URL"
+    },
+    {
+      "type": "text",
+      "id": "link_3_label",
+      "label": "Link 3 label",
+      "default": "FAQ"
+    },
+    {
+      "type": "url",
+      "id": "link_3_url",
+      "label": "Link 3 URL"
+    },
+    {
+      "type": "text",
+      "id": "link_4_label",
+      "label": "Link 4 label",
+      "default": "Shipping"
+    },
+    {
+      "type": "url",
+      "id": "link_4_url",
+      "label": "Link 4 URL"
+    },
+
+    {
+      "type": "header",
+      "content": "Mobile"
+    },
+    {
+      "type": "select",
+      "id": "mobile_layout",
+      "label": "Mobile layout",
+      "options": [
+        { "value": "stack", "label": "Stack (links top, logo center, search below)" },
+        { "value": "hide_links", "label": "Hide links" },
+        { "value": "hide_search", "label": "Hide search" }
+      ],
+      "default": "stack"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Utility Bar",
+      "category": "Header",
+      "settings": {
+      "link_1_label": "About",
+      "link_1_url": "shopify://pages/about",
+      "link_2_label": "Contact",
+      "link_2_url": "shopify://pages/contact"
+    }
+    }
+  ]
+}
+{% endschema %}
